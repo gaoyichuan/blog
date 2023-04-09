@@ -15,7 +15,7 @@ defaultContentLanguage = "zh-hans" # For HTML page, now support: en, zh-hans, zh
 summaryLength = 100 # Custom summary length, add <!--more--> in post file to custom split point
 paginate = 10
 
-# googleAnalytics = "UA-000000000-0" # Set your Google Analytics UA here
+googleAnalytics = "G-LVTF9F7QDY" # Set your Google Analytics UA here
 
 [outputFormats]
 [outputFormats.SearchIndex]
@@ -57,7 +57,7 @@ hideNoTagList = false
 showLicenseInFooter = false
 
 # License at the end of each post
-showLicense = true
+showLicense = false
 showToc = true
 
 # Copyright
