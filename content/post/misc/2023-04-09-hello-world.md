@@ -1,6 +1,6 @@
 ---
 title: Hi, there
-date: 2023-04-09
+date: 2023-04-09T00:00:00+08:00
 tags: [misc]
 ---
 
