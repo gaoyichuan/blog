@@ -168,6 +168,8 @@ class PLLBlackBox extends BlackBox {
     sysClkDomain.reset := ResetCtrl.asyncAssertSyncDeassert(    // 异步复位，同步释放
       input = pll.io.locked,    // 使用 PLL 锁定信号作为复位
       clockDomain = sysClkDomain,
+      inputPolarity = LOW,      // 注意极性
+      outputPolarity = HIGH,
     )
   }
 ```
