@@ -146,3 +146,15 @@ CONFIG_ENV_OFFSET=0x5E0000
 ```
 
 第一行指明 config name 为 `platform-top`，即 include 编写的 `platform-top.h` 文件。后面指定了 `bootscr` 和 `bootenv` 分区的偏移和大小。
+
+### U-Boot Script
+U-Boot Script（`boot.scr`）由 PetaLinux 自动生成，但其中的 Kernel Offset 等参数需要手动修改，修改 `project-spec/meta-user/recipes-bsp/u-boot/u-boot-zynq-scr.bbappend`，其中的参数会在 `do_compile` 步骤时由 `sed` 替换进 `${WORKDIR}/boot.cmd.${BOOTMODE}.${SOC_FAMILY}` 文件。具体修改的参数如下：
+
+```
+QSPI_KERNEL_OFFSET_zynq = "0x600000"
+QSPI_FIT_IMAGE_SIZE_zynq = "0x800000"
+```
+
+由于这个文件里面的内容比较多，涉及到了 zynq、versal、zynqmp 等几个平台，很容易修改错误，需要仔细检查。
+
+这里还有一个坑，PetaLinux 有时候不会自动 rebuild `boot.scr`，导致修改的参数不会生效。这时候可以使用 `petalinux-build -c u-boot-zynq-scr -x distclean` 彻底清理 `u-boot-zynq-scr` 这个 recipe，然后再次编译。
